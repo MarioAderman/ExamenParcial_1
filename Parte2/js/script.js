@@ -12,6 +12,16 @@
 
         Realiza todo lo anterior al hacer click en el botón. 
         */
+let btn = document.getElementById("btn_mayusculas").addEventListener("click", capturaElementos);
+
+function capturaElementos(e){
+  e.preventDefault();
+  let nombres = document.getElementById("txt_may");
+  console.log(nombres)
+  let nombresArray = nombres.split(',');
+  console.log(nombresArray)
+}
+
 
 
       /*
@@ -25,7 +35,13 @@
            Deberás convertir el string a Entero. 
     
     */
+let btn_2 = document.getElementById("btn_añoshumano").addEventListener("click", convertir)
 
+function convertir(e){
+  e.preventDefault();
+  let edad_humano = parseInt(document.getElementById("edad_humano").value) * 7;
+  document.getElementById("edad_perro").value = edad_humano;
+}
 
 
       /*  OBJETOS 
@@ -45,3 +61,38 @@
        Registra un evento de "click", para que cuando se de click en el botón, se muestren las propiedades de cada objeto en el input correspondiente. 
 
      */
+       let btn_3 = document.getElementById("btn_muestra").addEventListener("click", ponerPokemones)
+
+       function ponerPokemones(e){
+         e.preventDefault();
+        document.getElementById("nombre_poke1").value = this.nombre;
+        document.getElementById("especie_poke1").value = this.especie;
+        document.getElementById("ataque_poke1").value = this.ataque;
+        document.getElementById("defensa_poke1").value = this.defensa;
+        document.getElementById("nombre_poke2").value = this.nombre;
+        document.getElementById("especie_poke2").value = this.especie;
+        document.getElementById("ataque_poke2").value = this.ataque;
+        document.getElementById("defensa_poke2").value = this.defensa;
+       }
+
+       function displayPokemon(){
+        console.log(`${this.nombre} ${this.especie} ${this.ataque} ${this.defensa}`);
+        /*document.getElementById("nombre_poke1").value = this.nombre;
+        document.getElementById("especie_poke1").value = this.especie;
+        document.getElementById("ataque_poke1").value = this.ataque;
+        document.getElementById("defensa_poke1").value = this.defensa;*/
+      }
+      
+      function Pokemon(nombre, especie, ataque, defensa){
+        this.nombre = nombre;
+        this.especie = especie;
+        this.ataque = ataque;
+        this.defensa = defensa;
+        this.displayPokemon = displayPokemon;
+      }
+      
+      let Poke1 = new Pokemon('Charizard', 'Fuego', '100', '70')
+      let Poke2 = new Pokemon('Blastoise', 'Agua', '70', '100')
+      
+      Poke1.displayPokemon()
+      Poke2.displayPokemon()
