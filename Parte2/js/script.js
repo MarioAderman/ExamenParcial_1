@@ -16,10 +16,20 @@ let btn = document.getElementById("btn_mayusculas").addEventListener("click", ca
 
 function capturaElementos(e){
   e.preventDefault();
+  let outputArray = '';
   let nombres = document.getElementById("txt_may").value;
   //console.log(nombres)
   let nombresArray = nombres.split(',');
   //console.log(nombresArray)
+  let map1 = nombresArray.map(x => x.toLowerCase());
+  for (let i = 0; i < map1.length; i++){
+    if(i === 0){
+      outputArray = outputArray + map1[0];
+    } else{
+    outputArray = outputArray + ', ' + map1[i];
+    }
+  }
+  document.getElementById("txt_may").value = outputArray;
 }
 
 
